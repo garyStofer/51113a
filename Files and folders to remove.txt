@@ -1,0 +1,6 @@
+The files and folders to be removed from the source are marked "blue" by means of compression attribute 
+to easily distingush them on file explorer. 
+
+in include: terapcioctl.h
+in src folder: terapcio and pciio
+

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;*</Extensions>
+      <UniqueIdentifier>{AE2372EB-0C22-4B91-9F30-5DF24340E20D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <UniqueIdentifier>{7107629F-24A4-4F29-8474-5AFE35734648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms;man;xml</Extensions>
+      <UniqueIdentifier>{404FBDE3-4CF9-475C-A089-648CDFDA633D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inf Files">
+      <UniqueIdentifier>{6b645f93-182d-4440-ab4c-c52ec8e242fd}</UniqueIdentifier>
+      <Extensions>inf;inv;inx;mof;mc;</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IsrDpc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="precompsrc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PCIO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="Reg9656.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h" />
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="Reg9656.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="Precomp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Reg9656.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Private.h" />
+    <ClInclude Include="aoi_pcioIOctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pcio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Precomp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aoi_adapterRegs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aoi_GUIDInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="aoi_pcio.inx">
+      <Filter>Inf Files</Filter>
+    </Inf>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="version.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

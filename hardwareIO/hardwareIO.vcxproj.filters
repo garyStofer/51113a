@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{af43d31d-81ec-4dd2-8ff3-6a117306f655}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\jam source">
+      <UniqueIdentifier>{031af17c-b894-401b-bf01-03fface0d7ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{31af9bc0-a6f1-43c4-a55a-4b41ccf7a4b0}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Header Files\jam header">
+      <UniqueIdentifier>{794f50ac-5b38-4c24-8d37-90e5a4076812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{264ac777-72b7-4170-8bf2-df1529d7ea89}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="jam\jamarray.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamcomp.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamcrc.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamexec.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamexp.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamheap.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamjtag.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamnote.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamstack.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamstub.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamsym.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="jam\jamutil.cpp">
+      <Filter>Source Files\jam source</Filter>
+    </ClCompile>
+    <ClCompile Include="AWlenDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="barcode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bcInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bcSerialPort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bcSysParse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="beeper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="brdctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conveyor2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conveyorMC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conveyors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conveyorUMSCO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hardware.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hardwareDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hardwareIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="laser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lifters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lights.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MechIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pcio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smema.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AOI_IO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="hardwareIO.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="jam\jamarray.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamcomp.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamdefs.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamexec.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamexp.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamexprt.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamheap.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamjtag.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamstack.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamsym.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamutil.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="jam\jamytab.h">
+      <Filter>Header Files\jam header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\AWlenDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\barcode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\bcInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\bcSerialPort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\bcSysParse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\beeper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\brdctrl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\console.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\controllerAddresses.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\conveyor2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\conveyorMC.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\Conveyors.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\conveyorUMSCO.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\hardware.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\hardwareDlg.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\laser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\lifters.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lights.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\mechio.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\pcio.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\smema.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\tower.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hardwareIO\utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AOI_IO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\AWruler.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\comfail.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\cyclesto.bmp">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\hardwareIO.rc2">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\Trffc10a.ico">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\Trffc10b.ico">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\Trffc10c.ico">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\W95mbx01.ico">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\W95MBX03.ICO">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

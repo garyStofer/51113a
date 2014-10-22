@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)include\;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\$(PlatformName)\;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(SolutionDir)lib\$(PlatformName)\;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+    <IncludePath>$(SolutionDir)include\;$(ProjectDir);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_WINDLL;_AFXEXT;HARDWAREIO_EXPORTS;SUPPORT_EXPORTS;JAMDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+      <Message>Copying DEBUG DLL, PDB, &amp; LIB Files</Message>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\hardwareIO.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\hardwareIO.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(SolutionDir)lib\$(PlatformName)\$(TargetName)d.lib</ImportLibrary>
+      <AdditionalDependencies>OptimaDocd.lib;evmgrd.lib;supportd.lib;databased.lib;motorsd.lib;lutild.lib;MC8141P.lib;scannerd.lib;camerad.lib;statectrld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WINDLL;_AFXEXT;HARDWAREIO_EXPORTS;SUPPORT_EXPORTS;JAMDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\hardwareIO.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>if not exist \bin\EN\ md \bin\EN\
+copy \src\hardwareIO\Release\hardwareIO.dll \bin
+copy \src\hardwareIO\Release\hardwareIO.pdb \bin
+copy \src\hardwareIO\Release\hardwareIO.lib \lib
+copy \src\hardwareIO\Release\hardwareIO.dll \bin\EN</Command>
+      <Message>Copying RELEASE DLL &amp; LIB Files</Message>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\hardwareIO.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\hardwareIO.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>.\Release\hardwareIO.dll</OutputFile>
+      <ImportLibrary>$(SolutionDir)lib\$(PlatformName)\$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>evmgr.lib;support.lib;database.lib;ostore_util.lib;motors.lib;OptimaDoc.lib;lutil.lib;MC8141P.lib;scanner.lib;camera.lib;statectrl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AOI_IO.cpp" />
+    <ClCompile Include="jam\jamarray.cpp" />
+    <ClCompile Include="jam\jamcomp.cpp" />
+    <ClCompile Include="jam\jamcrc.cpp" />
+    <ClCompile Include="jam\jamexec.cpp" />
+    <ClCompile Include="jam\jamexp.cpp" />
+    <ClCompile Include="jam\jamheap.cpp" />
+    <ClCompile Include="jam\jamjtag.cpp" />
+    <ClCompile Include="jam\jamnote.cpp" />
+    <ClCompile Include="jam\jamstack.cpp" />
+    <ClCompile Include="jam\jamstub.cpp" />
+    <ClCompile Include="jam\jamsym.cpp" />
+    <ClCompile Include="jam\jamutil.cpp" />
+    <ClCompile Include="AWlenDlg.cpp" />
+    <ClCompile Include="barcode.cpp" />
+    <ClCompile Include="bcInterface.cpp" />
+    <ClCompile Include="bcSerialPort.cpp" />
+    <ClCompile Include="bcSysParse.cpp" />
+    <ClCompile Include="beeper.cpp" />
+    <ClCompile Include="brdctrl.cpp" />
+    <ClCompile Include="console.cpp" />
+    <ClCompile Include="conveyor2.cpp" />
+    <ClCompile Include="conveyorMC.cpp" />
+    <ClCompile Include="conveyors.cpp" />
+    <ClCompile Include="conveyorUMSCO.cpp" />
+    <ClCompile Include="hardware.cpp" />
+    <ClCompile Include="hardwareDlg.cpp" />
+    <ClCompile Include="hardwareIO.cpp" />
+    <ClCompile Include="laser.cpp" />
+    <ClCompile Include="lifters.cpp" />
+    <ClCompile Include="lights.cpp" />
+    <ClCompile Include="MechIO.cpp" />
+    <ClCompile Include="pcio.cpp" />
+    <ClCompile Include="smema.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="tower.cpp" />
+    <ClCompile Include="utilities.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="hardwareIO.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AOI_IO.h" />
+    <ClInclude Include="jam\jamarray.h" />
+    <ClInclude Include="jam\jamcomp.h" />
+    <ClInclude Include="jam\jamdefs.h" />
+    <ClInclude Include="jam\jamexec.h" />
+    <ClInclude Include="jam\jamexp.h" />
+    <ClInclude Include="jam\jamexprt.h" />
+    <ClInclude Include="jam\jamheap.h" />
+    <ClInclude Include="jam\jamjtag.h" />
+    <ClInclude Include="jam\jamstack.h" />
+    <ClInclude Include="jam\jamsym.h" />
+    <ClInclude Include="jam\jamutil.h" />
+    <ClInclude Include="jam\jamytab.h" />
+    <ClInclude Include="..\include\hardwareIO\AWlenDlg.h" />
+    <ClInclude Include="..\include\hardwareIO\barcode.hpp" />
+    <ClInclude Include="..\include\hardwareIO\bcInterface.h" />
+    <ClInclude Include="..\include\hardwareIO\bcSerialPort.h" />
+    <ClInclude Include="..\include\hardwareIO\bcSysParse.h" />
+    <ClInclude Include="..\include\hardwareIO\beeper.hpp" />
+    <ClInclude Include="..\include\hardwareIO\brdctrl.hpp" />
+    <ClInclude Include="..\include\hardwareIO\console.hpp" />
+    <ClInclude Include="..\include\hardwareIO\controllerAddresses.hpp" />
+    <ClInclude Include="..\include\hardwareIO\conveyor2.hpp" />
+    <ClInclude Include="..\include\hardwareIO\conveyorMC.hpp" />
+    <ClInclude Include="..\include\hardwareIO\Conveyors.hpp" />
+    <ClInclude Include="..\include\hardwareIO\conveyorUMSCO.hpp" />
+    <ClInclude Include="..\include\hardwareIO\hardware.hpp" />
+    <ClInclude Include="..\include\hardwareIO\hardwareDlg.hpp" />
+    <ClInclude Include="..\include\hardwareIO\laser.hpp" />
+    <ClInclude Include="..\include\hardwareIO\lifters.hpp" />
+    <ClInclude Include="..\include\lights.hpp" />
+    <ClInclude Include="..\include\mechio.hpp" />
+    <ClInclude Include="..\include\hardwareIO\pcio.hpp" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="..\include\hardwareIO\smema.hpp" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="..\include\hardwareIO\tower.hpp" />
+    <ClInclude Include="..\include\hardwareIO\utilities.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\AWruler.bmp" />
+    <CustomBuild Include="res\bitmap1.bmp" />
+    <CustomBuild Include="res\comfail.bmp" />
+    <CustomBuild Include="res\cyclesto.bmp" />
+    <CustomBuild Include="res\hardwareIO.rc2">
+      <FileType>RC</FileType>
+    </CustomBuild>
+    <CustomBuild Include="res\Trffc10a.ico" />
+    <CustomBuild Include="res\Trffc10b.ico" />
+    <CustomBuild Include="res\Trffc10c.ico" />
+    <CustomBuild Include="res\W95mbx01.ico" />
+    <CustomBuild Include="res\W95MBX03.ICO" />
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

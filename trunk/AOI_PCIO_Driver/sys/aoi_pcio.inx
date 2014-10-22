@@ -1,0 +1,80 @@
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=AOI_pcio; 
+ClassGuid={474A48D3-4E43-487B-ABA6-73D6E8C94835} 
+Provider=%ManufacturerName%
+CatalogFile=aoi_pcio.cat
+DriverVer= ;infstamp adds the version as directed by the VS project build properties
+
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=MyClassReg     
+
+[MyClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,0,"-26"		; a Icon from setupAPI.dll -- i.e. a plug with multiple cables
+
+HKR,,DeviceCharacteristics,0x10001,0x100     ;Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)" ;Allow generic all access to system and built-in Admin. 
+
+
+; ================= Device Install section =====================
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%ManufacturerName%=ManufacturerName,NT$ARCH$
+
+[SourceDisksFiles]
+aoi_pcio.sys=1
+
+[SourceDisksNames]
+1=%DiskName%,
+
+; For XP and later
+[ManufacturerName.NT$ARCH$]
+; DisplayName           Section           DeviceId
+; -----------           -------           --------
+%Pci9050.DRVDESC%=      Pci9x5x_Inst,     PCI\VEN_10b5&DEV_9050&SUBSYS_18001316&REV_01
+
+[Pci9x5x_Inst.NT]
+CopyFiles=Pci9x5x.CopyFiles
+
+[Pci9x5x.CopyFiles]
+aoi_pcio.sys
+
+[Pci9x5x_Inst.NT.Services]
+AddService=Pci9x5x,0x00000002,Pci9x5x_Service 
+
+[Pci9x5x_Service]
+DisplayName    = %Pci9x5x.SVCDESC%                            
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\aoi_pcio.sys                            
+AddReg         = Pci9x5x_Parameters_AddReg
+
+[Pci9x5x_Inst.NT.Wdf]
+KmdfService = Pci9x5x, Pci9x5x_wdfsect
+
+[Pci9x5x_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+ManufacturerName = "Landrex Inc"
+ClassName="AOI-Machine-Control" 
+DiskName = "AOI PCIO Install Disk"
+Pci9x5x.DeviceDesc = "AOI PCIO Adapter"
+Pci9x5x.SVCDESC = "AOI_PCIO Service"
+Pci9050.DRVDESC = "AOI_PCIO Driver for PLX9050"
+
+
+
+

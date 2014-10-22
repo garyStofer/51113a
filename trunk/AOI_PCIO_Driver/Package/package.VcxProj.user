@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7 Debug|Win32'">
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <EnableDeployment>True</EnableDeployment>
+    <RemoveDriver>True</RemoveDriver>
+    <InstallMode>None</InstallMode>
+    <HardwareIdString />
+    <CommandLine />
+    <ScriptPath>C:\Program Files\Windows Kits\8.1\Testing\Tests\Utilities\DefaultDriverPackageInstallationTask.dll</ScriptPath>
+    <DbgengRemoteMachineName>DRTESTW7</DbgengRemoteMachineName>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+    <DeployFiles />
+    <ScriptName>Microsoft.DriverKit.DefaultDriverPackageInstallationClass.PerformDefaultDriverPackageInstallation</ScriptName>
+    <ScriptDeviceQuery>%PathToInf%</ScriptDeviceQuery>
+    <DebugDeployment>False</DebugDeployment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7 Debug|x64'">
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <SignMode>TestSign</SignMode>
+    <EnableDeployment>True</EnableDeployment>
+    <RemoveDriver>True</RemoveDriver>
+    <InstallMode>None</InstallMode>
+    <HardwareIdString />
+    <CommandLine />
+    <ScriptPath>C:\Program Files\Windows Kits\8.1\Testing\Tests\Utilities\DefaultDriverPackageInstallationTask.dll</ScriptPath>
+    <DbgengRemoteMachineName>W7-64BIT</DbgengRemoteMachineName>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+    <DeployFiles />
+    <ScriptName>Microsoft.DriverKit.DefaultDriverPackageInstallationClass.PerformDefaultDriverPackageInstallation</ScriptName>
+    <ScriptDeviceQuery>%PathToInf%</ScriptDeviceQuery>
+    <DebugDeployment>False</DebugDeployment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8 Debug|Win32'">
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7 Release|Win32'">
+    <SignMode>TestSign</SignMode>
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <EnableDeployment>False</EnableDeployment>
+    <RemoveDriver>True</RemoveDriver>
+    <InstallMode>None</InstallMode>
+    <HardwareIdString>
+    </HardwareIdString>
+    <CommandLine />
+    <ScriptPath>C:\Program Files\Windows Kits\8.1\Testing\Tests\Utilities\DefaultDriverPackageInstallationTask.dll</ScriptPath>
+    <DbgengRemoteMachineName>
+    </DbgengRemoteMachineName>
+    <DbgengKernelMachineName>
+    </DbgengKernelMachineName>
+    <DeployFiles />
+    <ScriptName>Microsoft.DriverKit.DefaultDriverPackageInstallationClass.PerformDefaultDriverPackageInstallation</ScriptName>
+    <ScriptDeviceQuery>%PathToInf%</ScriptDeviceQuery>
+    <DebugDeployment>False</DebugDeployment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8.1 Debug|Win32'">
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8 Release|Win32'">
+    <SignMode>TestSign</SignMode>
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8.1 Release|Win32'">
+    <SignMode>TestSign</SignMode>
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8 Debug|x64'">
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7 Release|x64'">
+    <SignMode>TestSign</SignMode>
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>
+    </DbgengKernelMachineName>
+    <EnableDeployment>False</EnableDeployment>
+    <RemoveDriver>True</RemoveDriver>
+    <InstallMode>None</InstallMode>
+    <HardwareIdString />
+    <CommandLine />
+    <ScriptPath>C:\Program Files\Windows Kits\8.1\Testing\Tests\Utilities\DefaultDriverPackageInstallationTask.dll</ScriptPath>
+    <DbgengRemoteMachineName />
+    <DeployFiles />
+    <ScriptName>Microsoft.DriverKit.DefaultDriverPackageInstallationClass.PerformDefaultDriverPackageInstallation</ScriptName>
+    <ScriptDeviceQuery>%PathToInf%</ScriptDeviceQuery>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8.1 Debug|x64'">
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8 Release|x64'">
+    <SignMode>TestSign</SignMode>
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win8.1 Release|x64'">
+    <SignMode>TestSign</SignMode>
+    <TestCertificate>CN="WDKTestCert Gary,130543533914723582" | EB3AA859D72068C2A965454DDC3C5080A0BC1226</TestCertificate>
+    <DbgengKernelMachineName>W7-64BIT</DbgengKernelMachineName>
+  </PropertyGroup>
+</Project>

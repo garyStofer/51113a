@@ -21,11 +21,12 @@ main(  int argc, char* argv[]    )
 
 	pcio.Write_IOCtrl(PCIO_STRB_CTRL,A_STRB);
 	pcio.Read_IOCtrl(PCIO_INT_SEL,&result);	// exp 0xb148
-	pcio.Write_IOCtrl(PCIO_STRB_CTRL,D_STRB);		
-	pcio.Read_IOCtrl(PCIO_INT_SEL,&result);	// exp 0xb108
+	// Or we can use the Memory mapped modthode
+	pcio.PCIO_Write(PCIO_STRB_CTRL,D_STRB);		
+	pcio.PCIO_Read(PCIO_INT_SEL,&result);	// exp 0xb108
 
 #ifdef Force_a_Timer1_interrupt	
-	// The following is a test to see that the interrupt in the  driver is enabled  handled .
+	// The following is a test to see that the interrupt in the  driver is enabled & handled .
 	// Using discrete IO-control calls timer 1 is set to expire in 0x1122 uS. 
 	// Then the timer register is read back to verify that we can read it, and then the timer is started
 	// This should then trigger an interrupt in the driver code which in term clears the timer, so that it can be 
@@ -52,13 +53,13 @@ main(  int argc, char* argv[]    )
 	pcio.Write_IOCtrl(TMR1_CTRL,TMR_CTRL_RESET);// Reset the timer again --
 #endif
 	// Resetting controller -- This can be a catch22 -- if the controller is hung up and not responding on the cable we can't reset it
-	pcio.Write_IOCtrl(CONTROLLER_RESET,(USHORT) 0);		// This will execute reset in the controller and takes >100ms to complete
+	pcio.PCIO_Write(CONTROLLER_RESET,(USHORT) 0);		// This will execute reset in the controller and takes >100ms to complete
 	Sleep(CONTROLLER_BOOT_TIME);		// !!!!Controller needs more than 100ms to complete reset --  during which time no commands are taken
-	pcio.Write_IOCtrl(CONTROLLER_RESET,(USHORT) 1);		// This releases reset in controller 
+	pcio.PCIO_Write(CONTROLLER_RESET,(USHORT) 1);		// This releases reset in controller 
 	Sleep(100);
 	
 	// Now check the controller -- This is the first read out on the cable 
-	pcio.Read_IOCtrl(CONTROL_TYPE, &result);		// expect 0x140 for wc51140
+	pcio.PCIO_Read(CONTROL_TYPE, &result);		// expect 0x140 for wc51140
 	printf("Connected controller: %x\n", result);
 
 	if (result != 0x140 )
@@ -67,7 +68,7 @@ main(  int argc, char* argv[]    )
 		return 0;
 	}
 
-	pcio.Read_IOCtrl(CONTROL_FIRM_MAJOR, &result);	// expect 2
+	pcio.PCIO_Read(CONTROL_FIRM_MAJOR, &result);	// expect 2
 	printf("Controller Major version: %d\n",result);
 
 	if ( result != 2 )
@@ -76,26 +77,26 @@ main(  int argc, char* argv[]    )
 		return 0;
 	}
 
-	pcio.Read_IOCtrl(CONTROL_FRIM_MINOR, &result);	// expect 0
+	pcio.PCIO_Read(CONTROL_FRIM_MINOR, &result);	// expect 0
 	printf("Controller Minor version: %d\n",result);
 	 
 	// lightshow
-	pcio.Write_IOCtrl(LT_DRIVERS, 3);	// 3 is on 0 = 0ff	power on to light tower
-	pcio.Write_IOCtrl(LT_FLASH_DURATION, 0x200);	
+	pcio.PCIO_Write(LT_DRIVERS, 3);	// 3 is on 0 = 0ff	power on to light tower
+	pcio.PCIO_Write(LT_FLASH_DURATION, 0x200);	
 
 	// Blink Lights
 	for (i=400 ; i>=50; i = i/2)
 	{
-		pcio.Write_IOCtrl(LT_FLASH_DURATION, i);
-		pcio.Write_IOCtrl(LT_RED,2); 		// light on blink
-		pcio.Write_IOCtrl(LT_YELLOW,2); 	
-		pcio.Write_IOCtrl(LT_GREEN,2); 		
+		pcio.PCIO_Write(LT_FLASH_DURATION, i);
+		pcio.PCIO_Write(LT_RED,2); 		// light on blink
+		pcio.PCIO_Write(LT_YELLOW,2); 	
+		pcio.PCIO_Write(LT_GREEN,2); 		
 		Sleep(1000);
 	}
 
-	pcio.Write_IOCtrl(LT_YELLOW,0);  
-	pcio.Write_IOCtrl(LT_RED,0); 		// lights off
-	pcio.Write_IOCtrl(LT_GREEN,0);
+	pcio.PCIO_Write(LT_YELLOW,0);  
+	pcio.PCIO_Write(LT_RED,0); 		// lights off
+	pcio.PCIO_Write(LT_GREEN,0);
 	// Sleep(2000);
 		
 #ifdef LIGHT_TOWER_TEST_noInterruptsRunning
@@ -197,11 +198,10 @@ main(  int argc, char* argv[]    )
 			Sleep(i);
 		}
 
-
-		printf("Ending interrupt thread\n"); 
-		pcio.KillAllThreads(0);		
+		pcio.KillAllThreads(1);		
 		pcio.PCIO_Close();	
 
 	}
 	
-	return stat;}
+	return stat;
+}

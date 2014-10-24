@@ -14,18 +14,13 @@
 #define STR(x) _STR(x)
 #define TODO(x) __pragma(message("TODO: @ ln:"STR(__LINE__) " "_STR(x) ))
 
-
-
-
-
 class AOI_IO 
 {
 public:
-	bool PCIO_Read(USHORT index, USHORT *val );	// via *io_map
-	bool Read_IOCtrl( USHORT, USHORT * );			// via IOctl
-	bool PCIO_Write(USHORT index, USHORT val );	// via *io_map
-	bool Write_IOCtrl( USHORT, USHORT );			// via IOctl
-	
+	// these two are public only because the AOI_test application calls them direcly 
+	// the regular application should use the derived class's PCIO_read and PCIO_Write functions
+	bool Read_IOCtrl( USHORT, USHORT * );	// via IOctl
+	bool Write_IOCtrl( USHORT, USHORT );	// via IOctl
 private:
 	USHORT *io_map;
 #ifdef  CreateWithGUIDInterface
@@ -42,6 +37,8 @@ protected:
 	BOOL GetDriverIOCTLVersion (char *buf , size_t bufsz);
 	BOOL GetMemMap(void);
 	void Close_Device_Handle(void);
+	bool PCIO_Read(USHORT index, USHORT *val );	// via *io_map
+	bool PCIO_Write(USHORT index, USHORT val );	// via *io_map
 
 	int		StartInterruptThread( class TCPcio *);
 	HANDLE  m_InterruptThreadHdl;

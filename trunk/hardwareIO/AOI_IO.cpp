@@ -1,6 +1,6 @@
 #include "StdAfx.h"    
 #include <winioctl.h>
-#include "AOI_IO.h"
+#include "hardwareio\AOI_IO.h"
 #include "hardwareio\pcio.hpp" // needed for TCPcio class
 
 // Class to facilitate communication with hardware through the AOI_pcio driver

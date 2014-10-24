@@ -491,6 +491,26 @@ TCPcio::PCIO_Close(void)
 	return PCIO_SUCCESS;
 }
 
+// These two functions directly call the equivalent function in the base class while allowing 
+// the implemntation to be changed to the IOcontrol calls should a need  arise.
+// This could be achieved throuh inheritance, but the AOI_IO class would have to be exposed 
+// through yet another whole class DLLexport
+bool 
+TCPcio::PCIO_Read(USHORT index, USHORT *val )
+{
+	return AOI_IO::PCIO_Read(index,val);
+	// or possbly 
+	// return AOI_IO::Read_IOCtrl(index,val);
+}
+
+bool 
+TCPcio::PCIO_Write(USHORT index, USHORT val )
+{
+	return AOI_IO::PCIO_Write(index,val);
+	// or possbly 
+	//return AOI_IO::Write_IOCtrl(index,val);
+}
+
 USHORT
 TCPcio::GetControllerVersion(void)
 { // this  needs to be changed to return the ENUM, see hardwareIO::Init
@@ -1139,7 +1159,7 @@ TCPcio::Dome_ioRead(SHORT address, USHORT *data, SHORT count)
 
 	// dome address range (0x2000 or greater)
 	if (address < 0x2000)
-		return PCIO_Read(address, data);
+		return PCIO_Read(address,  data);
 
 	if (count < 1)
 		count = 1;
@@ -1181,15 +1201,14 @@ TCPcio::Dome_ioRead(SHORT address, USHORT *data, SHORT count)
 DWORD
 TCPcio::Dome_ioWrite(SHORT address, USHORT data)
 {
-	USHORT word = data;
-	return Dome_ioWrite(address, &word, 1);
+	return Dome_ioWrite(address, &data, 1);
 }
 
 DWORD
 TCPcio::Dome_ioWrite(SHORT address, USHORT *data, SHORT count)
 {
 	USHORT *dataPtr = data;
-
+	
 	// digital IO
 	PCIO_SetDigital();
 

@@ -97,12 +97,26 @@ TCPcio::PCIO_Open()
 	{
 		// These are read and writes via the direct user-spaced mapped hardware address range	
 		PCIO_Write(0x101,0x40);		// set analog strobe
-		PCIO_Read(0x100,&result);		// bit 0x40 should be set -- upper byte indicates HW revision b1
+		PCIO_Read(0x100,&result);		// bit 0x40 should be set -- upper byte indicates HW revision b1, 0xb148
 
 		PCIO_Write(0x101,0x00);		// set digital strobe
-		PCIO_Read(0x100,&result);		// bit 0x40 should be cleared
+		PCIO_Read(0x100,&result);		// bit 0x40 should be cleared -- should read 0xb108
 	}
 	return stat;
+}
+
+bool TCPcio::PCIO_Read(USHORT index, USHORT *val )
+{
+	return AOI_IO::PCIO_Read(index,val);
+	// or possbly 
+	// return AOI_IO::Read_IOCtrl(index,val);
+}
+
+bool TCPcio::PCIO_Write(USHORT index, USHORT val )
+{
+	return AOI_IO::PCIO_Write(index,val);
+	// or possbly 
+	//return AOI_IO::Write_IOCtrl(index,val);
 }
 
 void
@@ -117,10 +131,16 @@ TCPcio::StartInterruptThread(void)
 	return AOI_IO::StartInterruptThread(this);
 }
 void
-TCPcio::KillAllThreads( int thread )
+TCPcio::KillAllThreads(  int leave_WD_running )	// function argument used for WD disabling
 {
+
 	// EndInterruptThread( false);	// true: leaves the WD running will reboot WC140 after timeout
-	EndInterruptThread( true);	// true: leaves the WD running will reboot WC140 after timeout
+	if (leave_WD_running ) 
+		printf("End Interupt thread with WD-Running -- Will reboot controller soon\n");
+	else
+		printf("End Interupt thread with WD disabled -- Will not reboot controller\n");
+		
+	EndInterruptThread(  leave_WD_running !=0 );	// true: leaves the WD running will reboot WC140 after timeout
 }
 
 DWORD WINAPI

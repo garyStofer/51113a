@@ -1,7 +1,7 @@
 #pragma once
-#include "..\..\..\hardwareio\AOI_IO.h"
-#include "..\..\..\include\hardware_enum.h"
-#include "..\..\..\include\hardwareio\controllerAddresses.hpp"
+#include "hardwareio\AOI_IO.h"
+#include "hardware_enum.h"
+#include "hardwareio\controllerAddresses.hpp"
 
 #define CONTROLLER_BOOT_TIME 500	// TODO: Might be tweaked downward 
 
@@ -13,7 +13,8 @@ public:
 	~TCPcio();
 	int PCIO_Open(void);
 	void PCIO_Close(void);
-
+	bool PCIO_Read(USHORT index, USHORT *val );	
+	bool PCIO_Write(USHORT index, USHORT val );	
 	int  StartInterruptThread(void);
 	void KillAllThreads(int thread );	
 	void PauseSysWatchdog(void);

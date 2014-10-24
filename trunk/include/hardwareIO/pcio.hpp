@@ -26,7 +26,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "AOI_IO.h"
+#include "hardwareio\AOI_IO.h"
 #include "evmgrapi.h"
 #include "tstatus.h"
 #include "hardware_enum.h"
@@ -195,6 +195,8 @@ public:
 	DWORD   PCIO_EWriteEnable(void);
 	void    PCIO_SetDigital(void);
 	void    PCIO_SetAnalog (void);
+	bool	PCIO_Read(USHORT index, USHORT *val );	
+	bool	PCIO_Write(USHORT index, USHORT val );	
 
 	USHORT  GetPcioRevision(void);
 	void    GetPcioDriverRevision(CString &revision){revision = m_DriverRevision;};

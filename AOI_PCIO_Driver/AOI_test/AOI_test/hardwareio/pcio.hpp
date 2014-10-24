@@ -5,6 +5,18 @@
 
 #define CONTROLLER_BOOT_TIME 500	// TODO: Might be tweaked downward 
 
+typedef enum
+{	// driver DLL return codes
+	PCIO_TIMER_ERROR = -1,
+	PCIO_SUCCESS     =  0,
+	PCIO_INIT_ERROR,
+	PCIO_INTERRUPT_ERROR,
+	PCIO_OPEN_ERROR,
+	PCIO_CLOSE_ERROR,
+	PCIO_READ_ERROR,
+	PCIO_WRITE_ERROR,
+	PCIO_DOME_ADDR_ERROR,
+} tPCIO_RET;
 
 class TCPcio: public AOI_IO	
 {

@@ -144,7 +144,7 @@ main(  int argc, char* argv[]    )
 	pcio.PCIO_Write(LT_YELLOW,3);  
 	
 	// Start a thread to handle controller interrupts -- 
-	if ( pcio.StartInterruptThread() )
+	if ( pcio.StartInterruptThread() == PCIO_SUCCESS )
 	{
 
 		// this will take a while to run  
@@ -202,6 +202,8 @@ main(  int argc, char* argv[]    )
 		pcio.PCIO_Close();	
 
 	}
+	else 
+		printf (" Interrupt thread failed to start !! \n");
 	
 	return stat;
 }

@@ -704,7 +704,7 @@ AOI_IO::StartInterruptThread( TCPcio *t)
 	if (!m_InterruptThreadHdl)
 	{
 		TRACE("StartInterruptThread: failed to start\n");
-		return 0;
+		return PCIO_INTERRUPT_ERROR;
 	}
 
 	do
@@ -713,7 +713,7 @@ AOI_IO::StartInterruptThread( TCPcio *t)
 	} while (! m_InterruptThreadStatus);
 
 	TRACE("-> Interrupt thread with ID:%d started and running\n", id);
-	return 1;
+	return PCIO_SUCCESS;
 }
 
 /* Ends the interrupt thread gracefully by signalling an event which the interrupt thread is monitoring

@@ -163,7 +163,7 @@ enum CameraType
 // NT73XX & C51140
 // SystemController Firmware Revision
 enum { SC_SOFTWAREONLY = -2, SC_PREFLASH = -1, SC_A0, SC_A9, SC_B0};
-enum { SC_STATUS_NORMAL = 0, SC_STATUS_SO, SC_STATUS_EMO,    };
+
 
 #define CONTROL_DIAG_73           0x00000001 //[0]  diag_int           0x0001
 #define SYS_TIMER1_73             0x00000002 //[1]  timer 1            0x0002

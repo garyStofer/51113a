@@ -76,7 +76,7 @@
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
@@ -210,7 +210,7 @@ copy \src\hardwareIO\Release\hardwareIO.dll \bin\EN</Command>
     <ResourceCompile Include="hardwareIO.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AOI_IO.h" />
+    <ClInclude Include="..\include\hardwareIO\AOI_IO.h" />
     <ClInclude Include="jam\jamarray.h" />
     <ClInclude Include="jam\jamcomp.h" />
     <ClInclude Include="jam\jamdefs.h" />
@@ -262,7 +262,6 @@ copy \src\hardwareIO\Release\hardwareIO.dll \bin\EN</Command>
     <CustomBuild Include="res\Trffc10c.ico" />
     <CustomBuild Include="res\W95mbx01.ico" />
     <CustomBuild Include="res\W95MBX03.ICO" />
-    <CustomBuild Include="ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -20,7 +20,7 @@
  * Date:		December. 10, 1999
  *
  */
-
+ 
 #include "stdafx.h"
 #include <winioctl.h>
 
@@ -100,7 +100,6 @@ TCPcio::InitializeTCPcio(TCHardwareIO *hardware)
 	for (int i = 0; i < 32; i++)
 		m_ClassPtr[i]  = NULL;
 
-//	m_SC_Status                = SC_STATUS_NORMAL;
 TODO("I don't think that this should touch AOI_IO member m_InterruptThreadStatus")
 	m_InterruptThreadStatus    = FALSE;
 	m_LtTimeoutEnabled         = FALSE; // 
@@ -586,7 +585,6 @@ TCPcio::Controller_Init(HARDWAREMODE mode)
 {
 	DWORD id;
 	// startup
-//	m_SC_Status = SC_STATUS_NORMAL;
 
 	// digital IO
 	PCIO_SetDigital();
@@ -1681,14 +1679,6 @@ TODO("once the WD functionality has been established this ifdef can be enabled "
 			// CANCEL
 			pPcio->SendCancelEvent();
 
-// HUH, how would a 2us timeout automatically be an EMO event? Does EMO shut off power and therefore the WC140 fails to communicate??
-// This might have been a work-around in the prior code for the failure to wait for a rebooting WC140 after WD timeout.
-// Prior code caused the 2us timeout by re-reading the WC140 interrupt status while it was booting instead of using the 
-// status provided by the Device IO control return. The AOI_IO driver supresses a false 2us interrupt when the Sys WD  has timed 
-// out and the WC140 is rebooting and is only reporting SYS_TIMEOUT_73 in interrupt.status.
-
-			//			pPcio->m_SC_Status = SC_STATUS_EMO;
-TODO("This is confusing to me, What does interlock tripped have to do with a 2us timeout ?");
 			if (pPcio->m_pHardware->GetInitializationFlag() == FALSE)
 			{ 
 				pPcio->SendEvent(AOI_HW_INTERLOCK, _T("TCMechIO: Interlock Tripped"),1, SC_COMFAILURE);
@@ -1721,45 +1711,37 @@ TODO("The code in DigitalCallBackthread is using m_Interrupt to evaluate the nat
 				TRACE("I fed the dog\n");
 			}
 			// The actual Watchdog timed out and is rebooting the controller now 
-			// This takes about 200ms and we need to wait 500ms before we start talking to it again
-			// again, or else we get continued 2us time-outs on every io 
+			// This takes about 200ms and we need to wait that time before we start talking to it again
+			// again, or else we get continued 2us time-outs on every io attempt.
 
 			else if (interrupt.status & SYS_TIMEOUT_73)			
 			{
-				TRACE("Watchdog timeout happened! Waiting 500ms for the controller to recover \n");
+				TRACE("Watchdog timeout happened! Waiting 500ms for the controller to reboot \n");
 			
 				// This Wait type allows the thread to be canceled during the sleep as well
 				WaitForSingleObject(pPcio->m_EndInterruptThreadEvt,CONTROLLER_BOOT_TIME); 
 
-// TODO: I don't understand what the test below signifies. This code was inlined from TCPcio::ControllerWatchdogElapsed(void)
-// Why would we only process the catastrophic timeout and controller reboot event when m_SC_Status != SC_STATUS_NORMAL,
-// i.e. pPcio->m_SC_Status == SC_STATUS_EMO
-// 
-				//                     == SC_STATUS_EMO
-//				if (pPcio->m_SC_Status != SC_STATUS_NORMAL)  // This really is: 'if (pPcio->m_SC_Status == SC_STATUS_EMO)' 
-TODO("Condition m_SC_Status removed for WD timedout handling-- WC140 rebooted and we can't continue"); 
-				{
-					pPcio->KillAllThreads(PCIO_THREADS);  // kills all except this thread -- we simply exit gracefully
-				
-// TODO: do we need to flag all motor & conveyor controls to ignore system commands ??
-					// pPcio->m_pHardware->SetMode(SOFTWARE_ONLY);
+				pPcio->KillAllThreads(PCIO_THREADS);  // kills all except this thread -- we simply exit gracefully
+			
+TODO("Upon WD TIMEOUT:Do we need to flag all motor & conveyor controls to ignore system commands  at this point??");
+				// pPcio->m_pHardware->SetMode(SOFTWARE_ONLY);
 
-					// set error status to "MajorError"
-					pPcio->SendAlert(AOI_MAJORERROR);
+				// set error status to "MajorError"
+				pPcio->SendAlert(AOI_MAJORERROR);
 
-					//	cancel
-					pPcio->SendCancelEvent();
+				//	cancel
+				pPcio->SendCancelEvent();
 
-					MessageBox(NULL,
-						"System Controller watchdog timeout",
-						_T("AOI Alert Message"), MB_SYSTEMMODAL | MB_ICONEXCLAMATION | MB_OK);
+				MessageBox(NULL,
+					"System Controller watchdog timeout",
+					_T("AOI Alert Message"), MB_SYSTEMMODAL | MB_ICONEXCLAMATION | MB_OK);
 
-					goto thread_exit;
-				}
+				goto thread_exit;
+
 			}
 			else // Process all the rest of the interrupts in a seperate thread
 			{
-// TODO: The code in DigitalCallBackthread is using m_Interrupt set above to evaluate the nature of the interrpt-- 
+TODO("The code in DigitalCallBackthread is using m_Interrupt set above to evaluate the nature of the interrpt--"); 
 //		 This is problematic since it is possible that a new interrupt will occur while the processing thread is still running on the
 //		 last one and the last status will be overwritten -- loosing interrupts 
 //		 A queue for the interrupt status seems to be in order.

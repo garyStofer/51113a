@@ -352,7 +352,6 @@ private:
 	TCIO_Bits   m_IoBits[MAX_IO];
 	int         m_NumberIO;
 
-//	int         m_SC_Status;
 	int         m_TowerWatchDog;
 	int         m_LtTimeoutEnabled; 
 

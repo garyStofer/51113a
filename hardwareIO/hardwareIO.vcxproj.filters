@@ -250,7 +250,7 @@
     <ClInclude Include="..\include\hardwareIO\utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AOI_IO.h">
+    <ClInclude Include="..\include\hardwareIO\AOI_IO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -285,6 +285,5 @@
     <CustomBuild Include="res\W95MBX03.ICO">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

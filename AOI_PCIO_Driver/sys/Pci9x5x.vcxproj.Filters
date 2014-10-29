@@ -53,7 +53,6 @@
     <ClInclude Include="trace.h" />
     <ClInclude Include="Precomp.h" />
     <ClInclude Include="Private.h" />
-    <ClInclude Include="Reg9656.h" />
     <ClInclude Include="trace.h" />
     <ClInclude Include="Precomp.h" />
     <ClInclude Include="Private.h" />

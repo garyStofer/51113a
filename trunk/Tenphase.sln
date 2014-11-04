@@ -209,6 +209,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "support", "support\support.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wc140", "wc140\wc140.vcxproj", "{76B638A1-E530-3E23-E446-3D6AA1BD16D7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pciio", "pciio\Pciio.vcxproj", "{7F4E895E-C090-B042-C4D6-AE71D99D62DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Clean|Win32 = Clean|Win32
@@ -481,6 +483,14 @@ Global
 		{76B638A1-E530-3E23-E446-3D6AA1BD16D7}.Release|Win32.Build.0 = Release|Win32
 		{76B638A1-E530-3E23-E446-3D6AA1BD16D7}.Template|Win32.ActiveCfg = Template|Win32
 		{76B638A1-E530-3E23-E446-3D6AA1BD16D7}.Template|Win32.Build.0 = Template|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Clean|Win32.ActiveCfg = Template|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Clean|Win32.Build.0 = Template|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Debug|Win32.Build.0 = Debug|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Release|Win32.ActiveCfg = Release|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Release|Win32.Build.0 = Release|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Template|Win32.ActiveCfg = Template|Win32
+		{7F4E895E-C090-B042-C4D6-AE71D99D62DE}.Template|Win32.Build.0 = Template|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

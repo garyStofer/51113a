@@ -1,11 +1,7 @@
 #include "system.h"
 #include "jamexprt.h"
 
-//#include "pciio.h"
-#pragma message ( "TODO: file system.cpp can not include file pciio.h, should use TCPcio class to access HW")
-// TODO: this should to use class TCPcio in harwareIO.dll to open/close and communicate with the device 
-// GS:  I don't know how this is connected with the rest of the system -- i.e. is this a totally seperate exectable? 
-// if it is as standalone app then we need to create a class the drives from AIO_IO similar as the TCpcio or TCpcio_test class does.
+#include "pciio.h" // This is acut down version of AOI_IO -- only to be used for the stand alone Flash tool
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -172,6 +168,7 @@ bool CSystem::isValidFileName(CString name)
 	else
 		return true;
 }
+
 
 CString CSystem::GetRev()
 {

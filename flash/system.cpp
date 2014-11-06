@@ -69,9 +69,10 @@ int CSystem::program(char* fname, CStatic* message, CProgressCtrl* progress)
 	else
 	{
 		//get length of file
-		if (stat(fname, &sbuf) == 0) file_length = sbuf.st_size;
+		if (stat(fname, &sbuf) == 0) 
+			file_length = sbuf.st_size;
 
-		if ((fopen_s(&fp, fname, "rb")) == NULL)
+		if ((fp = fopen( fname, "rb")) == NULL)
 		{
 			fprintf(stderr, "Error: can't open file \"%s\"\n", fname);
 			return INVALID_FILE;

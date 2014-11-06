@@ -108,7 +108,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>Release/FLASH.exe</OutputFile>
-      <AdditionalDependencies>flash.lib;jamdll.lib;lutil.lib;support.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>flashdll.lib;jamdll.lib;lutil.lib;support.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -155,7 +155,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>flashd.lib;jamdlld.lib;lutild.lib;supportd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>flashdlld.lib;jamdlld.lib;lutild.lib;supportd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>

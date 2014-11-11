@@ -41,7 +41,6 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-TODO(" Why optimize off ??");
 #pragma optimize ("", off)
 
 /* Debug help 
@@ -100,7 +99,7 @@ TCPcio::InitializeTCPcio(TCHardwareIO *hardware)
 	for (int i = 0; i < 32; i++)
 		m_ClassPtr[i]  = NULL;
 
-TODO("I don't think that this should touch AOI_IO member m_InterruptThreadStatus")
+	// I don't think that this should touch AOI_IO member m_InterruptThreadStatus
 	m_InterruptThreadStatus    = FALSE;
 	m_LtTimeoutEnabled         = FALSE; // 
 
@@ -233,20 +232,7 @@ TCPcio::InitBits(SYSTEMTYPE type)
 	// find the number of items in the array
 	for (int i = m_NumberIO = 0; i < MAX_IO; i++)
 	{
-		/*
-		if ((ioBits++)->GetAddress() != IOBITS_INVALID)
-			m_NumberIO++;
-		*///用另外的方法實做,暫不改變,JulianShen,20140604
-TODO("Verify the counting of m_NumberIO ");
-/*
-// Julien: I can't read your comment above, but this code below does not count the NumberIO as it probably should
-//		 m_NumberIO is always going to either be 0 or 0x100 depending on the constant index of 0 into the m_IoBits array below. 
-//       and since ndx 0 is no IO_UNUSED1 m_NumberIO  will be 0 at the end of the loop
-//		 Maybe you wanted to say m_IoBits[i].GetAddress(.....) 
-		instead of:
-		if (m_IoBits[0x00].GetAddress() != IOBITS_INVALID)
-			m_NumberIO++;
-*/
+
 		if (m_IoBits[i].GetAddress() != IOBITS_INVALID)
 			m_NumberIO++;
 	}
@@ -321,11 +307,6 @@ TCPcio::PCIO_Reset(void)
 	PCIO_Write(PCIO_RESET, OFF);
 		
 	PCIO_SetDigital(); // digital IO -- This is redundant because that's the reset condition -- left here for clarity
-
-TODO("Why are we getting the controller version and THEN rebooting the controller. ");
-
-// It seems the other way around would make more sense, if any.
-// rebooting the controller is probably not necessary in the first place
 
 	// determine if controller is there
 	if ( GetControllerVersion() == 0)	
@@ -642,7 +623,6 @@ TCPcio::Controller_Init(HARDWAREMODE mode)
 DWORD WINAPI
 TCPcio::LtWatchdogThread(void *arg)
 {
-// TODO: Raising the priority level off too many threads defeats the purpose. 
 	// raise the priority of this thread
 	SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_TIME_CRITICAL);
 
@@ -651,13 +631,12 @@ TCPcio::LtWatchdogThread(void *arg)
 
 	while (pPcio->m_KillThread != TRUE)
 	{
-TODO(" Sys WD reloaded in LtWatchdogThread every 250ms -- WHY?");
-// I'm not sure why we also would want to relaod the system WD here as well
-// This kind of defeats the purpose of the interrupt threads handling of the WD Pretimeout 
-// However it should not cause any problems for the interrpt thread, except that it would never get 
-// a PRE_TIMEOUT interrupt as long as this is running.
-
-		pPcio->ReloadSysWatchdog(); // Feeds the watchdog by resetting the time again
+		// NOTE:
+		// I'm not sure why we also would want to relaod the system WD here as well
+		// This kind of defeats the purpose of the interrupt threads handling of the WD Pretimeout 
+		// However it should not cause any problems for the interrpt thread, except that it would never get 
+		// a PRE_TIMEOUT interrupt as long as this loop is running.
+		pPcio->ReloadSysWatchdog(); // Feeds the watchdog by resetting the time again, this call is redundant but harmless
 	
 		if (pPcio->m_pHardware->GetMode() != DIAGNOSTICS)
 		{ // don't interfere with diagnostics
@@ -674,8 +653,9 @@ TODO(" Sys WD reloaded in LtWatchdogThread every 250ms -- WHY?");
 				}
 			}
 		}
-// TODO: 
-// In order to end the thread properly this should be waiting on a event that can be signaled 
+		// Note: 
+		// In order to end this thread properly this should be waiting on a event that can be signaled 
+		// Otherwise you have to always kill the thread which can lead to resource leaks.
 		Sleep(250); // 1/4 second loop  
 	} // while running (pcio->m_KillThread != TRUE)
 
@@ -685,100 +665,6 @@ TODO(" Sys WD reloaded in LtWatchdogThread every 250ms -- WHY?");
 	return NULL;
 }
 
-#ifdef NOT_USED_and_to_be_deleted 
-/*
- * Function:	cbControllerWatchdogElapsed
- *
- * Description:	watchdog interrupt entry
- *
- * Parameters:
- *		void *	ClassPtr
- *		int     interrupt
- *
- * Return Values:
- *		none
- *
- * Discussion:
- *
- */
-
-void CALLBACK
-TCPcio::cbControllerWatchdogElapsed(void *classPtr, int interrupt)
-{
-	// pointer to TCPcio object
-	TCPcio * pPcio = (TCPcio *) classPtr;
-
-	// disable the watchdog
-	pPcio->PCIO_Write(WD_ENABLE, (SHORT) 0x0);
-
-	// clear the interrupt
-	pPcio->PCIO_Write(WD_STATUS, (SHORT) 0x0);
-	pPcio->PCIO_Write(WD_MASK,   (SHORT) 0x0);
-
-	if (pPcio->m_SC_Status != SC_STATUS_NORMAL)
-	{
-		// kill the WatchDog Thread
-		if (pPcio->m_LtWatchdogThread != NULL)
-		{
-			TRACE("ControllerWatchdog: Terminating WatchDog Thread\n");
-
-			TerminateThread(pPcio->m_LtWatchdogThread, 0);
-			CloseHandle(pPcio->m_LtWatchdogThread);
-			pPcio->m_LtWatchdogThread = NULL;
-		}
-
-		// set error status to "MajorError"
-		pPcio->SendAlert(AOI_MAJORERROR);
-
-		//	cancel
-		pPcio->SendCancelEvent();
-
-		UserMessage(_T("System Controller watchdog timeout"),
-			_T("AOI Alert Message"), MB_SYSTEMMODAL | MB_ICONEXCLAMATION | MB_OK);
-	}
-}
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// TODO: Which one of these two identical functions is used ??
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#pragma message (" Watchdog timeout handling confused, use one or the other ControllerWatchdogElapsed()")
-void
-TCPcio::ControllerWatchdogElapsed(void)
-{
-	DisableSysWatchdog();
-
-	if (m_SC_Status != SC_STATUS_NORMAL)
-	{
-		// kill the WatchDog Thread
-		if (m_LtWatchdogThread != NULL)
-		{
-			TRACE("ControllerWatchdog: Terminating WatchDog Thread\n");
-
-			TerminateThread(m_LtWatchdogThread, 0);
-			CloseHandle(m_LtWatchdogThread);
-			m_LtWatchdogThread = NULL;
-		}
-
-		// set error status to "MajorError"
-		SendAlert(AOI_MAJORERROR);
-
-		//	cancel
-		SendCancelEvent();
-
-		MessageBox(NULL,
-			"System Controller watchdog timeout",
-			_T("AOI Alert Message"), MB_SYSTEMMODAL | MB_ICONEXCLAMATION | MB_OK);
-	}
-}
-
-void CALLBACK
-TCPcio::cbControllerPreWatchdog(void *classPtr, int interrupt)
-{
-	// pointer to TCPcio object
-	TCPcio * pPcio = (TCPcio *) classPtr;
-	pPcio->ReloadSysWatchdog();
-}
-#endif
 void
 TCPcio::EnableLtWatchdog(int timer)
 {

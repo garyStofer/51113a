@@ -258,15 +258,10 @@ TCHardwareIO::~TCHardwareIO()
 void
 TCHardwareIO::Close()
 {
-	// stop the WatchDog
-	m_pPcio->KillAllThreads(PCIO_ALL_THREADS);
 
-TODO("Should we call PCIO_Close here instead of calling KillAllThreads first and then call PCIO_Close at the end of this function");
-/* PCIO_close() calls KillAllThreads first. 
+	// PCIO_close() calls KillAllThreads first.
+	m_pPcio->PCIO_Close(); // close the PCIO connection
 
-	// close the PCIO
-	m_pPcio->PCIO_Close();
-*/
 	SetMode((HARDWAREMODE) NULL);
 	
 	RegFactoryHardware(HW_UNTESTED);
@@ -342,9 +337,9 @@ TODO("Should we call PCIO_Close here instead of calling KillAllThreads first and
 		delete (m_pBrdCtrl);	// Board Controller
 	m_pBrdCtrl = NULL;
 
-// TODO: See TODO above
+	// PCIO_Close moved to top
 	// close the PCIO
-	m_pPcio->PCIO_Close();
+	// m_pPcio->PCIO_Close(); 
 
 	// Critical Section no longer needed
 	DeleteCriticalSection(&csHardware);

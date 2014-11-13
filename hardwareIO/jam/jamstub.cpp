@@ -369,7 +369,7 @@ char *error_text[] =
 #define MAX_ERROR_CODE (int)((sizeof(error_text)/sizeof(error_text[0]))+1)
 
 /************************************************************************/
-
+#ifdef UNUSED_CODE_NOT_INCLUDED
 int jam(char* filename, char* action)
 {
 	BOOL error = FALSE;
@@ -480,7 +480,7 @@ int jam(char* filename, char* action)
 
 	return (exit_code);
 }
-
+#endif
 int initialize_jtag_hardware(TCPcio* m_pHardware)
 {
 	if (!jtag_hardware_initialized)
@@ -491,12 +491,6 @@ int initialize_jtag_hardware(TCPcio* m_pHardware)
 				//return FALSE;
 			m_pSC->PCIO_SetAnalog();//pciioSetAnalog();
 
-// TODO: This disabling of the IO_adapter ints should not be here !!!!!!!!!!
-// The driver automatically absorbs unnecessary interrupts -- Interrupts are only enabled while the interrupt thread in pcio.cpp is running
-// or some other thread is calling GetNextInterrupt of which I did not see any evidence of. 
-TODO ("Investigate why IO adapter interrupts where disbaled here !!!! ");  
-//			m_pSC->PCIO_Write(0x100, (short) 0x10);//pciioDisableInterrupts();
-		
 			jtag_hardware_initialized = TRUE;
 			return TRUE;
 		}

@@ -544,6 +544,13 @@ TCHardwareIO::RegistryCheck(void)
 		// HARDWARE_ENABLED or SOFTWARE_ONLY modes.
 		hardware = HARDWARE_ENABLED;
 	}
+	else if (osvi.dwMajorVersion == 6)
+	{
+		// OS is Win 7
+		// No registry check.  rely on the detection of the PCIO and SC to select
+		// HARDWARE_ENABLED or SOFTWARE_ONLY modes.
+		hardware = HARDWARE_ENABLED;
+	}
 	else // if (hardware == SOFTWARE_ONLY)
 	{
 		GetSysReg()->sysv_HardwareStatus = SOFTWARE_ONLY;

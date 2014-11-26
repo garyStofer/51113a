@@ -475,18 +475,24 @@ TCPcio::PCIO_Close(void)
 // the implemntation to be changed to the IOcontrol calls should a need  arise.
 // This could be achieved throuh inheritance, but the AOI_IO class would have to be exposed 
 // through yet another whole class DLLexport
-bool 
+tPCIO_RET 
 TCPcio::PCIO_Read(USHORT index, USHORT *val )
 {
-	return AOI_IO::PCIO_Read(index,val);
+	if ( !  AOI_IO::PCIO_Read(index,val) )
+		return PCIO_READ_ERROR;
+
+	return PCIO_SUCCESS;
 	// or possbly 
 	// return AOI_IO::Read_IOCtrl(index,val);
 }
 
-bool 
+tPCIO_RET 
 TCPcio::PCIO_Write(USHORT index, USHORT val )
 {
-	return AOI_IO::PCIO_Write(index,val);
+	if ( !  AOI_IO::PCIO_Write(index,val) ) 
+		return PCIO_WRITE_ERROR;
+	
+	return PCIO_SUCCESS;
 	// or possbly 
 	//return AOI_IO::Write_IOCtrl(index,val);
 }

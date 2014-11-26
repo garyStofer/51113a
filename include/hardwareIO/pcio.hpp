@@ -195,8 +195,8 @@ public:
 	DWORD   PCIO_EWriteEnable(void);
 	void    PCIO_SetDigital(void);
 	void    PCIO_SetAnalog (void);
-	bool	PCIO_Read(USHORT index, USHORT *val );	
-	bool	PCIO_Write(USHORT index, USHORT val );	
+	tPCIO_RET	PCIO_Read(USHORT index, USHORT *val );	
+	tPCIO_RET	PCIO_Write(USHORT index, USHORT val );	
 
 	USHORT  GetPcioRevision(void);
 	void    GetPcioDriverRevision(CString &revision){revision = m_DriverRevision;};

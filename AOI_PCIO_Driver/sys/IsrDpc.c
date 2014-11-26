@@ -29,7 +29,6 @@ InterruptCreate(IN PDEVICE_EXTENSION DevExt)
     InterruptConfig.EvtInterruptEnable  = EvtInterruptEnable;
     InterruptConfig.EvtInterruptDisable = EvtInterruptDisable;
 
-// TODO : ???????????????
     InterruptConfig.AutomaticSerialization = TRUE;
 
 	WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE(&attributes, INTERRUPT_EXTENSION);		// reserve and initialize storage for the interrupt context aka InterruptExtension

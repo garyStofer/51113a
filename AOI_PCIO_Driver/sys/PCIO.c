@@ -18,7 +18,6 @@
 #pragma alloc_text (PAGE, EvtDeviceReleaseHardware)
 #pragma alloc_text (PAGE, EvtDeviceD0Exit)
 #pragma alloc_text (PAGE, EvtDriverContextCleanup)
-// TODO : add in  the rest of applicable functions to the paged pool 
 #endif
 
 // These static variables having to do with the mapping of the HW io space into the user application process space 

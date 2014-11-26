@@ -442,7 +442,7 @@ AOI_IO::PCIO_Read(USHORT index, USHORT *val )
 		return false;
 	}
 
-	if (io_map && hDevice )		// if we don't have both we don't have both we don't have a connection to the HW
+	if (io_map && hDevice )		// if we don't have both  we don't have a connection to the HW
 	{
 		*val = io_map[index]; 
 		return true;

@@ -377,13 +377,13 @@ enum {STOP, RUN};
 #define LGHTNG_DEF_BASE_ADDR 0x2000
 #define STROBE_DEF_BASE_ADDR 0x3000
 #define LAST_LIGHTDEFADDR    0x27f8
-#define LAST_STROBEDEFADDR   0x3bfc
+#define LAST_STROBEDEFADDR   0x37fc
 #define LAST_MEMORYADDR      0xffff
 
 #define	STRB_DEFN_SIZE	     0x0004     //8 bytes or 4 words
 #define LIGHT_DEFN_SIZE      0x0008     //16 bytes or 8 words		
 #define MAX_LIGHT_DEFNS      0x00ff     //leave the last one for temporary storage
-#define MAX_STRB_DEFNS       0x02ff     //leave the last one for temporary storage
+#define MAX_STRB_DEFNS       0x01ff     //leave the last one for temporary storage
 #define SIZE_CLOSE_TO_PRIME_NUMBER 1021	//if 300 light defitions are to be stored with four 
 										//possible rotations, then we need 1200 bytes of storage
 
